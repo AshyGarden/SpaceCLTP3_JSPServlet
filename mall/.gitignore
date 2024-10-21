@@ -28,6 +28,7 @@ nb-configuration.xml
 .project
 .settings/
 *.xml
+*.MF
 
 # Intellij
 .idea/
