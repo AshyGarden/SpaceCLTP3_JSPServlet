@@ -1,6 +1,6 @@
 package Àç¿¬.servlet;
 
-import java.util.List;
+import java.util.List;   
 
 public interface SellerDao {
 	

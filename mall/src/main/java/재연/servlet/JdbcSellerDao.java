@@ -9,7 +9,7 @@ import java.util.List;
 
 public class JdbcSellerDao implements SellerDao{
 
-	@Override
+	@Override   
 	public void insert(Seller seller) {
 		try(Connection connection = DataSource.getDataSource();
 	            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO SELLER " +
