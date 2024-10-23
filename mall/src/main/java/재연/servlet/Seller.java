@@ -4,7 +4,7 @@ public class Seller {
 	int seller_number;
 	String seller_id;
 	String name;   
-	String password;
+	String password; 
 	String postal_code;
 	String street_address;
 	String address_detail;
