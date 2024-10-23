@@ -39,7 +39,7 @@
                      <div class="tab-content" id="myTabContent">
                          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                              <h3 class="register-heading">회원가입 양식</h3>
-                             <div class="row register-form">
+                             <form action="login" class="row register-form" id="signupform" method="post" >
                                  <div class="col-md-6">
                                      <div class="form-group">
                                          <input type="text" class="form-control" placeholder="Name" value="" required/>
@@ -54,7 +54,7 @@
                                          <input type="password" class="form-control"  placeholder="Confirm Password *" value="" required/>
                                      </div>
                                      <div class="form-group">
-                                         <input type="text" class="form-control" placeholder="상표명을 입력하세요" value="" required/>
+                                         <input type="text" class="form-control" placeholder="닉네임을 입력해주세요(선택사항)" value="" /> <!--  -->
                                      </div>
                                  </div>
                                  <div class="col-md-6">
@@ -75,8 +75,8 @@
                                         <input type="email" class="form-control" placeholder="Email" value="" />
                                      </div>
                                  </div>
-                                 <input type="submit" class="btnRegister"  value="Register"/>
-                             </div>
+                                 <input type="submit" class="btnRegister" id="signupform" value="Register"/>
+                             </form>
                          </div>
                      </div>
                  </div>

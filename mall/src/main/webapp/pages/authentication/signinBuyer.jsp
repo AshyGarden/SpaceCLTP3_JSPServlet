@@ -76,7 +76,7 @@
                                         <input type="email" class="form-control" placeholder="Email" value="" />
                                      </div>
                                  </div>
-                                 <input type="submit" class="btnRegister"  value="Register"/>
+                                 <input type="submit" class="btnRegister" id="signupform" value="Register"/>
                              </form>
                          </div>
                      </div>
