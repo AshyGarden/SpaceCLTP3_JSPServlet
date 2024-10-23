@@ -47,6 +47,8 @@ public class JdbcSellerDao implements SellerDao{
 
             while(rs.next()) {
                 Seller seller = new Seller();
+                
+                seller.setSeller_number(rs.getInt("SELLER_NUMBER"));
                 seller.setSeller_id(rs.getString("SELLER_ID"));
                 seller.setPassword(rs.getString("PASSWORD"));
                 seller.setName(rs.getString("NAME"));
@@ -78,6 +80,8 @@ public class JdbcSellerDao implements SellerDao{
             ResultSet rs = pStat.executeQuery();
 
             if(rs.next()) {
+            	
+            	seller.setSeller_number(rs.getInt("SELLER_NUMBER"));
                 seller.setSeller_id(rs.getString("SELLER_ID"));
                 seller.setPassword(rs.getString("PASSWORD"));
                 seller.setName(rs.getString("NAME"));
