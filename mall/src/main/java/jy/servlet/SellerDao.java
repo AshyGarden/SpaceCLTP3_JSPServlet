@@ -1,4 +1,4 @@
-package Àç¿¬.servlet;
+package jy.servlet;
 
 import java.util.List;   
 

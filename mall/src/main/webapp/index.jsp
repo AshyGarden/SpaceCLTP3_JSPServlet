@@ -232,7 +232,7 @@
 	           </div>
 	       </div>
 	   </section>
-	   <jsp:include page="/global/footer.jsp"></jsp:include>
+	   <jsp:include page="/global/footer.jsp"/>
 	</div>
 </body>
 </html>
