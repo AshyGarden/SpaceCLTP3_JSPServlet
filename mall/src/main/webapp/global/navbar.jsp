@@ -28,7 +28,9 @@
                </ul>
                <form class="d-flex">
                		<!-- logout 状況 スタト -->
-                   	<button class="btn btn-outline-dark" onclick="location.href='http://localhost:8080/mall/login';">Login</button>
+                   	<button class="btn btn-outline-dark" onclick="location.href='http://localhost:8080/mall/';">Login</button>
+                 
+                 
                    	<%-- <a href="${pageContext.request.contextPath}/login" role="button">login</a> --%>
                    	<!-- logout 状況　エンド -->
                    	&nbsp; &nbsp; 
@@ -39,6 +41,9 @@
                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                    </button>
                    <!-- login 状況　エンド -->
+               </form>
+               <form action = "buyerregister" method = "post">
+               		<button type = "submit" class="btn btn-outline-dark">Sign Up</button>
                </form>
            </div>
        </div>
