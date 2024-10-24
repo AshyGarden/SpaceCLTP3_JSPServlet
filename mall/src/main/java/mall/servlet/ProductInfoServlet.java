@@ -1,4 +1,4 @@
-package jy.servlet;
+package mall.servlet;
 
 import java.io.IOException;
 
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial") 
-@WebServlet("/signinSeller") 
-public class SellerSigninServlet extends HttpServlet{
-	
+@WebServlet("/productinfo") 
+public class ProductInfoServlet extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		process(request, response);
@@ -33,11 +33,11 @@ public class SellerSigninServlet extends HttpServlet{
 		
 		System.out.println(action);
 
-		String dispatcherUrl ="/pages/authentication/signinSeller.jsp";
+		String dispatcherUrl ="/pages/products/productinfo.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(dispatcherUrl);
 		rd.forward(request, response);
 		
 	}
-
+	
 }

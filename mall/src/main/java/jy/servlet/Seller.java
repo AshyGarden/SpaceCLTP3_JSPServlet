@@ -1,4 +1,4 @@
-package Àç¿¬.servlet;
+package jy.servlet;
 
 public class Seller {
 	int seller_number;
