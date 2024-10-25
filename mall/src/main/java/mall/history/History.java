@@ -1,4 +1,6 @@
-package mall.younghun;
+package mall.history;
+
+import mall.younghun.Buyer;
 
 public class History {
 	private int history_number;
