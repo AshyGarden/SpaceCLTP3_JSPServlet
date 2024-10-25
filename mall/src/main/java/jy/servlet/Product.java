@@ -1,34 +1,34 @@
 package jy.servlet;
 
 public class Product {
-	int product_number;
+	int productNumber;
 	int price;
 	String name;
 	String category;
 	String description;
-	int discount_percentage;
+	int discountPercentage;
 	Seller seller;
 	
 	public Product() {}
 	
-	public Product(int product_number, int price, String name, String category, String description,
-			int discount_percentage, Seller seller) {
+	public Product(int productNumber, int price, String name, String category, String description,
+			int discountPercentage, Seller seller) {
 		super();
-		this.product_number = product_number;
+		this.productNumber = productNumber;
 		this.price = price;
 		this.name = name;
 		this.category = category;
 		this.description = description;
-		this.discount_percentage = discount_percentage;
+		this.discountPercentage = discountPercentage;
 		this.seller = seller;
 	}
 
 	public int getProduct_number() {
-		return product_number;
+		return productNumber;
 	}
 
-	public void setProduct_number(int product_number) {
-		this.product_number = product_number;
+	public void setProduct_number(int productNumber) {
+		this.productNumber = productNumber;
 	}
 
 	public int getPrice() {
@@ -64,11 +64,11 @@ public class Product {
 	}
 
 	public int getDiscount_percentage() {
-		return discount_percentage;
+		return discountPercentage;
 	}
 
-	public void setDiscount_percentage(int discount_percentage) {
-		this.discount_percentage = discount_percentage;
+	public void setDiscount_percentage(int discountPercentage) {
+		this.discountPercentage = discountPercentage;
 	}
 
 	public Seller getSeller() {
@@ -81,8 +81,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [product_number=" + product_number + ", price=" + price + ", name=" + name + ", category="
-				+ category + ", description=" + description + ", discount_percentage=" + discount_percentage
+		return "Product [productNumber=" + productNumber + ", price=" + price + ", name=" + name + ", category="
+				+ category + ", description=" + description + ", discount_percentage=" + discountPercentage
 				+ ", seller=" + seller + "]";
 	}
 	

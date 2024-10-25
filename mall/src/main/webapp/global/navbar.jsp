@@ -16,7 +16,7 @@
                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index">Home</a></li>
                    <li class="nav-item"><a class="nav-link" href="about">About</a></li>
-                   <li class="nav-item dropdown">
+                   <!-- <li class="nav-item dropdown">
                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                            <li><a class="dropdown-item" href="#!">All Products</a></li>
@@ -24,12 +24,12 @@
                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                            <li><a class="dropdown-item" href="#!">New Arrivals!</a></li>
                        </ul>
-                   </li>       
+                   </li> -->       
                </ul>
                <form class="d-flex">
                		<!-- logout 状況 スタト -->
-                   	<button class="btn btn-outline-dark" onclick="location.href='http://localhost:8080/mall/login';">Login</button>
-                   	<%-- <a href="${pageContext.request.contextPath}/login" role="button">login</a> --%>
+                   	<%-- <button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath}/login'">Login</button> --%>
+                   	<a class="btn btn-outline-dark mt-auto" href="login">Login</a>
                    	<!-- logout 状況　エンド -->
                    	&nbsp; &nbsp; 
                    	<!-- login 状況　スタト -->
@@ -45,11 +45,4 @@
    </nav>
    <!-- Navigation End -->
 </body>
-<!-- <script>
-	const loginBtn = document.querySelector("#login");
-	loginBtn.addEventListener('click',function(){	
-		location.href = 'http://localhost:8080/mall/login';
-		console.log(location.href);
-	}); 
-</script> -->
 </html>

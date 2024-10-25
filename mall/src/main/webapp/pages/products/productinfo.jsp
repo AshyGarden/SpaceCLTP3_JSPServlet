@@ -7,7 +7,7 @@
 	<title>Product Infomation</title>
 	<style>
 	.wrapper{
-	 	background-image: url("${pageContext.request.contextPath}/resources/image/background/productinfobg.pg");
+	 	background-image: url("${pageContext.request.contextPath}/resources/image/background/productinfobg.jpg");
 	    background-size: cover; 
 	    background-position: center; 
 	    width: 100%;
@@ -29,7 +29,7 @@
                             <span class="text-decoration-line-through">10000</span>
                             <span>8000</span>
                         </div>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                        <p class="lead">하늘하늘 내리는 눈송이와 함께 즐거운 겨울을 지내보세요!</p>
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
