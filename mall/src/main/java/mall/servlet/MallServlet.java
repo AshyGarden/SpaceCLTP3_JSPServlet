@@ -41,8 +41,11 @@ public class MallServlet extends HttpServlet{
 			ProductDao productDao = new JdbcProductDao();
 			Product product = productDao.findByName(productName);
 			request.setAttribute("product", product);
+		}
+		
+		
+		if(action.equals("productinfo")) {
 			dispatcherUrl = "/products/productinfo.jsp";
-			
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(dispatcherUrl);
