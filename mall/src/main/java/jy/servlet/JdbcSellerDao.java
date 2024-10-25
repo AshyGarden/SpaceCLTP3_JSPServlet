@@ -128,18 +128,31 @@ public class JdbcSellerDao implements SellerDao{
 		
 	}
 
+//	@Override
+//	public void deleteById(int seller_number) {
+//		try (Connection connection = DataSource.getDataSource();
+//				 PreparedStatement preparedStatement
+//						 = connection.prepareStatement("DELETE FROM SELLER WHERE SELLER_NUMBER = ?")) {
+//				preparedStatement.setInt(1, seller_number);
+//				preparedStatement.executeUpdate();
+//			
+//			}
+//			catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//	}
 	@Override
 	public void deleteById(int seller_number) {
 		try (Connection connection = DataSource.getDataSource();
-				 PreparedStatement preparedStatement
-						 = connection.prepareStatement("DELETE FROM SELLER WHERE SELLER_NUMBER = ?")) {
-				preparedStatement.setInt(1, seller_number);
-				preparedStatement.executeUpdate();
+				PreparedStatement preparedStatement
+				= connection.prepareStatement("DELETE FROM SELLER WHERE SELLER_NUMBER = ?")) {
+			preparedStatement.setInt(1, seller_number);
+			preparedStatement.executeUpdate();
 			
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 		
 }
