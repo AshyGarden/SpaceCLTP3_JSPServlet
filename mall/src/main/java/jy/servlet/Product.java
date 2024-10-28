@@ -8,7 +8,7 @@ public class Product {
 	String description;
 	int discount_percentage;
 	Seller seller;
-	
+
 	public Product() {}
 	
 	public Product(int product_number, int price, String name, String category, String description,
