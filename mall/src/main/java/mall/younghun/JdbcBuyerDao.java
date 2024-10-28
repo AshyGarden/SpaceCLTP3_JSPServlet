@@ -14,22 +14,20 @@ public class JdbcBuyerDao implements BuyerDao {
 	@Override
 	public void insert(Buyer buyer) {
 		// TODO Auto-generated method stub
-		try(Connection connection = DataSource.getDataSource()){
-			
+		try(Connection connection = DataSource.getDataSource();
 			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO BUYER "
 					+ "(BUYER_ID, PASSWORD, NAME, POSTAL_CODE, STREET_ADDRESS, ADDRESS_DETAIL, PHONE_NUMBER, EMAIL) "
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)")){
 			
-			preparedStatement.setInt(1, buyer.getBuyer_number());
-			preparedStatement.setString(2, buyer.getBuyer_id());
-			preparedStatement.setString(3, buyer.getPassword());
-			preparedStatement.setString(4, buyer.getName());
-			preparedStatement.setString(5, buyer.getPostal_code());
-			preparedStatement.setString(6, buyer.getStreet_address());
-			preparedStatement.setString(7, buyer.getAddress_detail());
-			preparedStatement.setString(8, buyer.getPhone_number());
+			preparedStatement.setString(1, buyer.getBuyer_id());
+			preparedStatement.setString(2, buyer.getPassword());
+			preparedStatement.setString(3, buyer.getName());
+			preparedStatement.setString(4, buyer.getPostal_code());
+			preparedStatement.setString(5, buyer.getStreet_address());
+			preparedStatement.setString(6, buyer.getAddress_detail());
+			preparedStatement.setString(7, buyer.getPhone_number());
 			preparedStatement.setString(8, buyer.getEmail());
-			preparedStatement.executeQuery();
+			preparedStatement.executeUpdate();
 			
 			
 		}catch(SQLException e) {
@@ -40,11 +38,14 @@ public class JdbcBuyerDao implements BuyerDao {
 	@Override
 	public void delete(int buyer_number) {
 		// TODO Auto-generated method stub
-		try(Connection connection = DataSource.getDataSource()){
-			
-			PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM BUYER WHERE BUYER_NUMBER = ?");
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM BUYER WHERE BUYER_NUMBER = ?")){
 			preparedStatement.setInt(1, buyer_number);
-			preparedStatement.executeQuery();
+			try {
+			preparedStatement.executeUpdate();
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -54,12 +55,12 @@ public class JdbcBuyerDao implements BuyerDao {
 	@Override
 	public void update(Buyer buyer) {
 		// TODO Auto-generated method stub
-		try(Connection connection = DataSource.getDataSource()){
-			
+		try(Connection connection = DataSource.getDataSource();
 			PreparedStatement preparedStatement = connection.prepareStatement("UPDATE BUYER SET BUYER_ID = ?, PASSWORD =?, "
 					+ "NAME = ?, POSTAL_CODE = ? , STREET_ADDRESS = ?, "
 					+ "ADDRESS_DETAIL = ?, PHONE_NUMBER = ?, EMAIL = ? "
-					+ "WHERE BUYER_NUMBER = ?");
+					+ "WHERE BUYER_NUMBER = ?")){
+			
 			preparedStatement.setString(1, buyer.getBuyer_id());
 			preparedStatement.setString(2, buyer.getPassword());
 			preparedStatement.setString(3, buyer.getName());
@@ -77,13 +78,13 @@ public class JdbcBuyerDao implements BuyerDao {
 	}
 
 	@Override
-	public Buyer findById(int buyer_number) {
+	public Buyer findById(String buyer_id) {
 		// TODO Auto-generated method stub
 		Buyer buyer = null;
 		try(Connection connection = DataSource.getDataSource()){
 			
-			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM BUYER WHERE BUYER_NUMBER = ?");
-			preparedStatement.setInt(1, buyer_number);
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM BUYER WHERE BUYER_ID = ?");
+			preparedStatement.setString(1, buyer_id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()) {
 				buyer = new Buyer();

@@ -35,6 +35,9 @@
 		                       Cart
 		                       <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
 		                  	</button>
+		                  	<a class="btn btn-outline-dark" href="${pageContext.request.contextPath}/history">
+							    History
+							</a>
 	                   		&nbsp;
 			                <a class="btn btn-outline-dark mt-auto" href="logout">logout</a>         
 	                   		<!-- Buyer Login status end -->
