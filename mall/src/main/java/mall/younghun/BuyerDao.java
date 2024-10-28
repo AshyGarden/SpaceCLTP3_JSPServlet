@@ -6,7 +6,7 @@ public interface BuyerDao {
 	void insert(Buyer buyer);
 	void delete(int id);
 	void update(Buyer buyer);
-	Buyer findById(int id);
+	Buyer findById(String id);
 	List<Buyer> findAll();
 	
 	

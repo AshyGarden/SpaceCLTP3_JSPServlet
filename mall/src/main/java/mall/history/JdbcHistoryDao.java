@@ -15,11 +15,11 @@ public class JdbcHistoryDao implements HistoryDao {
 	@Override
 	public void insert(History history) {
 		// TODO Auto-generated method stub
-		try(Connection connection = DataSource.getDataSource()){
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO HISTORY (BUYER_NUMBER) VALUES (?)")){
 			
-			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO HISTORY (BUYER_NUMBER) VALUES (?)");
 			preparedStatement.setInt(1, history.getBuyer().getBuyer_number());
-			preparedStatement.executeQuery();
+			preparedStatement.executeUpdate();
 			
 		}catch(SQLException e) {
 		e.printStackTrace();
