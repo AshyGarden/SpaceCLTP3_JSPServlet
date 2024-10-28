@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,22 +27,35 @@
                    </li> -->       
                </ul>
                <form class="d-flex">
-               		<!-- logout 状況 スタト -->
-                   	<%-- <button class="btn btn-outline-dark" onclick="location.href='${pageContext.request.contextPath}/login'">Login</button> --%>
-                   	<a class="btn btn-outline-dark mt-auto" href="login">Login</a>
-                   	<button class="btn btn-outline-dark" onclick="location.href='http://localhost:8080/mall/';">Login</button>
-                   	<!-- logout 状況　エンド -->
-                   	&nbsp; &nbsp; 
-                   	<!-- login 状況　スタト -->
-                   	<button class="btn btn-outline-dark" type="submit">　
-                       <i class="bi-cart-fill me-1"></i>
-                       Cart
-                       <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                   </button>
-                   <!-- login 状況　エンド -->
-               </form>
-               <form action = "buyerregister" method = "post">
-               		<button type = "submit" class="btn btn-outline-dark">Sign Up</button>
+               		<c:choose>
+	              		<c:when test="${member != null && member == buyer}"> <!-- member is not null + buyer -->
+		                   	<!-- Buyer Login status start-->
+		                   	<button class="btn btn-outline-dark" type="submit">　
+		                       <i class="bi-cart-fill me-1"></i>
+		                       Cart
+		                       <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+		                  	</button>
+	                   		&nbsp;
+			                <a class="btn btn-outline-dark mt-auto" href="logout">logout</a>         
+	                   		<!-- Buyer Login status end -->
+	              		</c:when>
+	              		
+                   		<c:when test="${member != null && member == seller}"> <!-- member is not null + seller -->
+                   			<!-- seller login status start -->
+			                <a class="btn btn-outline-dark mt-auto" href="logout">logout</a>                            		
+                   			<!-- seller login status end -->
+                   		</c:when>
+                   		
+	               		<c:otherwise>
+		               		<!-- logout status start -->
+		                   	<a class="btn btn-outline-dark mt-auto" href="login">login</a>
+		                   	&nbsp;
+		                   	<a class="btn btn-outline-dark mt-auto" href="signinBuyer">SignUp(Buyer)</a>
+		                   	&nbsp;
+		                   	<a class="btn btn-outline-dark mt-auto" href="signinSeller">SignUp(Seller)</a>           
+		                   	<!-- logout status end -->
+	               		</c:otherwise>
+              	   </c:choose>
                </form>
            </div>
        </div>
