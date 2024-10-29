@@ -1,47 +1,48 @@
 package jy.servlet;
 
 public class Seller {
-	int seller_number;
-	String seller_id;
+	int sellerNumber;
+	String sellerId;
 	String name;   
 	String password; 
-	String postal_code;
-	String street_address;
-	String address_detail;
-	String phone_number;
+	String postalCode;
+	String streetAddress;
+	String addressDetail;
+	String phoneNumber;
 	String email;
-	String company_name;
+	String companyName;
 	
 	public Seller() {}
-	
-	public Seller(int seller_number, String seller_id, String name, String password, String postal_code,
-			String street_address, String address_detail, String phone_number, String email, String company_name) {
-		this.seller_number = seller_number;
-		this.seller_id = seller_id;
+
+	public Seller(int sellerNumber, String sellerId, String name, String password, String postalCode,
+			String streetAddress, String addressDetail, String phoneNumber, String email, String companyName) {
+		super();
+		this.sellerNumber = sellerNumber;
+		this.sellerId = sellerId;
 		this.name = name;
 		this.password = password;
-		this.postal_code = postal_code;
-		this.street_address = street_address;
-		this.address_detail = address_detail;
-		this.phone_number = phone_number;
+		this.postalCode = postalCode;
+		this.streetAddress = streetAddress;
+		this.addressDetail = addressDetail;
+		this.phoneNumber = phoneNumber;
 		this.email = email;
-		this.company_name = company_name;
+		this.companyName = companyName;
 	}
 
-	public int getSeller_number() {
-		return seller_number;
+	public int getSellerNumber() {
+		return sellerNumber;
 	}
 
-	public void setSeller_number(int seller_number) {
-		this.seller_number = seller_number;
+	public void setSellerNumber(int sellerNumber) {
+		this.sellerNumber = sellerNumber;
 	}
 
-	public String getSeller_id() {
-		return seller_id;
+	public String getSellerId() {
+		return sellerId;
 	}
 
-	public void setSeller_id(String seller_id) {
-		this.seller_id = seller_id;
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
 	}
 
 	public String getName() {
@@ -60,36 +61,36 @@ public class Seller {
 		this.password = password;
 	}
 
-	public String getPostal_code() {
-		return postal_code;
+	public String getPostalCode() {
+		return postalCode;
 	}
 
-	public void setPostal_code(String postal_code) {
-		this.postal_code = postal_code;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
-	public String getStreet_address() {
-		return street_address;
+	public String getStreetAddress() {
+		return streetAddress;
 	}
 
-	public void setStreet_address(String street_address) {
-		this.street_address = street_address;
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
 	}
 
-	public String getAddress_detail() {
-		return address_detail;
+	public String getAddressDetail() {
+		return addressDetail;
 	}
 
-	public void setAddress_detail(String address_detail) {
-		this.address_detail = address_detail;
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 	}
 
-	public String getPhone_number() {
-		return phone_number;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getEmail() {
@@ -100,20 +101,21 @@ public class Seller {
 		this.email = email;
 	}
 
-	public String getCompany_name() {
-		return company_name;
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public void setCompany_name(String company_name) {
-		this.company_name = company_name;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	@Override
 	public String toString() {
-		return "Seller [seller_number=" + seller_number + ", seller_id=" + seller_id + ", name=" + name + ", password="
-				+ password + ", postal_code=" + postal_code + ", street_address=" + street_address + ", address_detail="
-				+ address_detail + ", phone_number=" + phone_number + ", email=" + email + ", company_name="
-				+ company_name + "]";
+		return "Seller [sellerNumber=" + sellerNumber + ", sellerId=" + sellerId + ", name=" + name + ", password="
+				+ password + ", postalCode=" + postalCode + ", streetAddress=" + streetAddress + ", addressDetail="
+				+ addressDetail + ", phoneNumber=" + phoneNumber + ", email=" + email + ", companyName=" + companyName
+				+ "]";
 	}
+	
 	
 }

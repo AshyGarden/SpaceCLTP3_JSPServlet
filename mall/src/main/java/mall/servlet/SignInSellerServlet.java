@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@SuppressWarnings("serial") 
+//@SuppressWarnings("serial") 
 //@WebServlet("/signinSeller") 
 public class SignInSellerServlet extends HttpServlet{
 

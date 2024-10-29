@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet{
 		String action = uri.substring(lastIndex+1); 
 		
 		System.out.println(action);
-
+ 
 		String dispatcherUrl ="/pages/authentication/login.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(dispatcherUrl);
