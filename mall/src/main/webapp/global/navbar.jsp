@@ -55,7 +55,7 @@
 		                   	&nbsp;
 		                   	<a class="btn btn-outline-dark mt-auto" href="signinBuyer">SignUp(Buyer)</a>
 		                   	&nbsp;
-		                   	<a class="btn btn-outline-dark mt-auto" href="signinSeller">SignUp(Seller)</a>           
+		                   	<a class="btn btn-outline-dark mt-auto" href="register">SignUp(Seller)</a>           
 		                   	<!-- logout status end -->
 	               		</c:otherwise>
               	   </c:choose>

@@ -56,10 +56,10 @@
 	                  <div class="form-group">
 	                      <input type="submit" class="btnSubmit" value="Login" />
 	                  </div>
-	                  <div class="form-group">
-	                      <a href="signinSeller" class="signin">판매자 회원가입</a>
-	                  </div>
 	              </form>
+	              
+	                      <a href="register" class="signin">판매자 회원가입</a>
+	                  
 	          </div>
 	      </div>
 	  </div>  

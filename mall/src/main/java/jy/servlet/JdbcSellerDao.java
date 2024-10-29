@@ -109,8 +109,8 @@ public class JdbcSellerDao implements SellerDao{
 	public void update(Seller seller) {
     	
     	try(Connection connection = DataSource.getDataSource();
-    			PreparedStatement pStatement = connection.prepareStatement("UPDATE SELLER SET SELLER_ID = '?', PASSWORD ='?', NAME = '?', POSTAL_CODE = '?' , STREET_ADDRESS = '?', \r\n"
-    					+ "ADDRESS_DETAIL = '?', PHONE_NUMBER = '?', EMAIL = '?', COMPANY_NAME = '?'\r\n"
+    			PreparedStatement pStatement = connection.prepareStatement("UPDATE SELLER SET SELLER_ID = ?, PASSWORD =?, NAME = ?, POSTAL_CODE = ? , STREET_ADDRESS = ?,"
+    					+ "ADDRESS_DETAIL = ?, PHONE_NUMBER = ?, EMAIL = ?, COMPANY_NAME = ?"
     					+ "WHERE SELLER_NUMBER = ?")){ 
     			
     		
