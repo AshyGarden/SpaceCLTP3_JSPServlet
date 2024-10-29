@@ -7,27 +7,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import mall.global.DataSource;
+
 public class JdbcSellerDao implements SellerDao{
 
 	@Override   
 	public void insert(Seller seller) {
 		try(Connection connection = DataSource.getDataSource();
-	            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO SELLER " +
-	                    "(SELLER_ID, PASSWORD, NAME, POSTAL_CODE, STREET_ADDRESS, ADDRESS_DETAIL, PHONE_NUMBER, EMAIL,COMPANY_NAME) VALUES (?,?,?,?,?,?,?,?,?)"))
+	            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO SELLER (SELLER_ID, PASSWORD, NAME, POSTAL_CODE, STREET_ADDRESS, ADDRESS_DETAIL, PHONE_NUMBER, EMAIL, COMPANY_NAME) VALUES (?,?,?,?,?,?,?,?,?)"))
 	        {
 
-	            preparedStatement.setString(1, seller.seller_id);
-	            preparedStatement.setString(2, seller.password);
-	            preparedStatement.setString(3, seller.name);
-	            preparedStatement.setString(4, seller.postal_code);
-	            preparedStatement.setString(5, seller.street_address);
-	            preparedStatement.setString(6, seller.address_detail);
-	            preparedStatement.setString(7, seller.phone_number);
-	            preparedStatement.setString(8, seller.email);
-	            preparedStatement.setString(9, seller.company_name);
+	            preparedStatement.setString(1, seller.getSellerId());
+	            preparedStatement.setString(2, seller.getPassword());
+	            preparedStatement.setString(3, seller.getName());
+	            preparedStatement.setString(4, seller.getPostalCode());
+	            preparedStatement.setString(5, seller.getStreetAddress());
+	            preparedStatement.setString(6, seller.getAddressDetail());
+	            preparedStatement.setString(7, seller.getPhoneNumber());
+	            preparedStatement.setString(8, seller.getEmail());
+	            preparedStatement.setString(9, seller.getCompanyName());
 	            
 
 	            preparedStatement.executeUpdate();
+	            
+	            System.out.println(seller.toString());
+	           
 
 	        }catch (SQLException e){
 
@@ -45,19 +49,19 @@ public class JdbcSellerDao implements SellerDao{
 
              ResultSet rs = pStat.executeQuery()) {
 
-            while(rs.next()) {
+             while(rs.next()) {
                 Seller seller = new Seller();
                 
-                seller.setSeller_number(rs.getInt("SELLER_NUMBER"));
-                seller.setSeller_id(rs.getString("SELLER_ID"));
+                seller.setSellerNumber(rs.getInt("SELLER_NUMBER"));
+                seller.setSellerId(rs.getString("SELLER_ID"));
                 seller.setPassword(rs.getString("PASSWORD"));
                 seller.setName(rs.getString("NAME"));
-                seller.setPostal_code(rs.getString("POSTAL_CODE"));
-                seller.setStreet_address(rs.getString("STREET_ADDRESS"));
-                seller.setAddress_detail(rs.getString("ADDRESS_DETAIL"));
-                seller.setPhone_number(rs.getString("PHONE_NUMBER"));
+                seller.setPostalCode(rs.getString("POSTAL_CODE"));
+                seller.setStreetAddress(rs.getString("STREET_ADDRESS"));
+                seller.setAddressDetail(rs.getString("ADDRESS_DETAIL"));
+                seller.setPhoneNumber(rs.getString("PHONE_NUMBER"));
                 seller.setEmail(rs.getString("EMAIL"));
-                seller.setCompany_name(rs.getString("COMPANY_NAME"));
+                seller.setCompanyName(rs.getString("COMPANY_NAME"));
 
                 sellers.add(seller);
             }
@@ -70,27 +74,28 @@ public class JdbcSellerDao implements SellerDao{
 	}
 
 	@Override
-	public Seller findById(int seller_number) {
-		Seller seller = new Seller();
+	public Seller findById(String sellerId){
+		Seller seller = null;
 
         try (Connection conn = DataSource.getDataSource();
-             PreparedStatement pStat = conn.prepareStatement("SELECT * FROM SELLER WHERE SELLER_NUMBER = ?")) {
+             PreparedStatement pStat = conn.prepareStatement("SELECT * FROM SELLER WHERE SELLER_ID = ?")) {
         	
-            pStat.setInt(1, seller_number);
+            pStat.setString(1, sellerId);
             ResultSet rs = pStat.executeQuery();
 
             if(rs.next()) {
+            	seller = new Seller();
             	
-            	seller.setSeller_number(rs.getInt("SELLER_NUMBER"));
-                seller.setSeller_id(rs.getString("SELLER_ID"));
+            	seller.setSellerNumber(rs.getInt("SELLER_NUMBER"));
+                seller.setSellerId(rs.getString("SELLER_ID"));
                 seller.setPassword(rs.getString("PASSWORD"));
                 seller.setName(rs.getString("NAME"));
-                seller.setPostal_code(rs.getString("POSTAL_CODE"));
-                seller.setStreet_address(rs.getString("STREET_ADDRESS"));
-                seller.setAddress_detail(rs.getString("ADDRESS_DETAIL"));
-                seller.setPhone_number(rs.getString("PHONE_NUMBER"));
+                seller.setPostalCode(rs.getString("POSTAL_CODE"));
+                seller.setStreetAddress(rs.getString("STREET_ADDRESS"));
+                seller.setAddressDetail(rs.getString("ADDRESS_DETAIL"));
+                seller.setPhoneNumber(rs.getString("PHONE_NUMBER"));
                 seller.setEmail(rs.getString("EMAIL"));
-                seller.setCompany_name(rs.getString("COMPANY_NAME"));
+                seller.setCompanyName(rs.getString("COMPANY_NAME"));
             }
 
         } catch (SQLException e) {
@@ -109,16 +114,16 @@ public class JdbcSellerDao implements SellerDao{
     					+ "WHERE SELLER_NUMBER = ?")){ 
     			
     		
-    			pStatement.setString(1, seller.seller_id);
-    			pStatement.setString(2, seller.password);    		
-    			pStatement.setString(3, seller.name);
-    			pStatement.setString(4, seller.postal_code);
-    			pStatement.setString(5, seller.street_address);
-    			pStatement.setString(6, seller.address_detail);
-    			pStatement.setString(7, seller.phone_number);
-    			pStatement.setString(8, seller.email);
-    			pStatement.setString(9, seller.company_name);
-    			pStatement.setInt(10, seller.seller_number);
+    			pStatement.setString(1, seller.getSellerId());
+    			pStatement.setString(2, seller.getPassword());    		
+    			pStatement.setString(3, seller.getName());
+    			pStatement.setString(4, seller.getPostalCode());
+    			pStatement.setString(5, seller.getStreetAddress());
+    			pStatement.setString(6, seller.getAddressDetail());
+    			pStatement.setString(7, seller.getPhoneNumber());
+    			pStatement.setString(8, seller.getEmail());
+    			pStatement.setString(9, seller.getCompanyName());
+    			pStatement.setInt(10, seller.getSellerNumber());
 
     			pStatement.executeUpdate();
     			
@@ -142,11 +147,11 @@ public class JdbcSellerDao implements SellerDao{
 //			}
 //	}
 	@Override
-	public void deleteById(int seller_number) {
+	public void deleteById(String sellerId) {
 		try (Connection connection = DataSource.getDataSource();
 				PreparedStatement preparedStatement
-				= connection.prepareStatement("DELETE FROM SELLER WHERE SELLER_NUMBER = ?")) {
-			preparedStatement.setInt(1, seller_number);
+				= connection.prepareStatement("DELETE FROM SELLER WHERE SELLER_ID = ?")) {
+			preparedStatement.setString(1, sellerId);
 			preparedStatement.executeUpdate();
 			
 		}
