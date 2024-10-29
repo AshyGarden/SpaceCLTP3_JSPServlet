@@ -30,38 +30,34 @@ public class LoginServlet extends HttpServlet{
 		process(request, response);
 	}
 	
+	
+		
 	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uri = request.getRequestURI();
-		int lastIndex = uri.lastIndexOf("/");
-		String action = uri.substring(lastIndex + 1);
-		
-		BuyerDao buyerDao = new JdbcBuyerDao();
-		SellerDao sellerDao = new JdbcSellerDao();
-		
-		if(action.equals("login")) {
-			String _id = request.getParameter("id");
-			String _password = request.getParameter("password");
-			String userType = request.getParameter("userType");
-			
-			HttpSession session = request.getSession();
-			if(userType.equals("buyer")) {
-				Buyer buyer = buyerDao.findById(_id);
-				
-				if(buyer != null && buyer.getPassword().equals(_password)) {
-					session.setAttribute("buyer", buyer);
-					
-				}else
-				
-			}else if(userType.equals("seller")) {
-				Seller seller;
-			}
-
-		}
-		
-		
-
-		
+	    String uri = request.getRequestURI();
+	    int lastIndex = uri.lastIndexOf("/");
+	    String action = uri.substring(lastIndex + 1);
+	    
+	    BuyerDao buyerDao = new JdbcBuyerDao();
+	    SellerDao sellerDao = new JdbcSellerDao();
+	    
+	    if(action.equals("login")) {
+	        String _id = request.getParameter("id");
+	        String _password = request.getParameter("password");
+	        String userType = request.getParameter("userType");
+	        
+	        HttpSession session = request.getSession();
+	        if(userType.equals("buyer")) {
+	            Buyer buyer = buyerDao.findById(_id);
+	            
+	            if(buyer != null && buyer.getPassword().equals(_password)) {
+	                session.setAttribute("buyer", buyer);
+	            }
+	        } else if(userType.equals("seller")) {
+	            Seller seller;
+	        }
+	    }
 	}
+
 	
 	
 }
