@@ -6,8 +6,8 @@ public interface SellerDao {
 	
 	void insert(Seller seller);
 	List<Seller> findAll(); 
-	Seller findById(int seller_number);
+	Seller findById(String sellerId);
 	void update(Seller seller);
-	void deleteById(int seller_number);
+	void deleteById(String sellerId);
 
 }
