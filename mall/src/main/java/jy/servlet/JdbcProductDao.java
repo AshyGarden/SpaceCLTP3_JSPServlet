@@ -19,7 +19,7 @@ public class JdbcProductDao implements ProductDao{
 	            preparedStatement.setInt(1, product.price);
 	            preparedStatement.setString(2, product.name);
 	            preparedStatement.setString(3, product.description);
-	            preparedStatement.setString(4, product.getSeller().seller_id);
+	            preparedStatement.setString(4, product.getSeller().getSellerId());
 
 	            preparedStatement.executeUpdate();
 
@@ -49,7 +49,7 @@ public class JdbcProductDao implements ProductDao{
                 product.setDescription(rs.getString("DESCRIPTION"));
                 
                 Seller seller = new Seller();
-                seller.setSeller_id(rs.getString("SELLER_NUMBER"));
+                seller.setSellerId(rs.getString("SELLER_NUMBER"));
                 product.setSeller(seller);
                
                 products.add(product);

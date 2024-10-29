@@ -89,8 +89,8 @@ public class JdbcBuyerDao implements BuyerDao {
 			if(resultSet.next()) {
 				buyer = new Buyer();
 				buyer.setBuyer_number(resultSet.getInt("BUYER_NUMBER"));
-				buyer.setBuyer_id(resultSet.getString("BUYER_ID"));
-				buyer.setPassword(resultSet.getString("PASSWROD"));
+				buyer.setBuyer_id(buyer_id);
+				buyer.setPassword(resultSet.getString("PASSWORD"));
 				buyer.setName(resultSet.getString("NAME"));
 				buyer.setPostal_code(resultSet.getString("POSTAL_CODE"));
 				buyer.setStreet_address(resultSet.getString("Street_Address"));

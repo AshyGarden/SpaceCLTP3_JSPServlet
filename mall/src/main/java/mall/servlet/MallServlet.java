@@ -42,16 +42,8 @@ public class MallServlet extends HttpServlet{
 		int lastIndex = uri.lastIndexOf("/"); 
 		String action = uri.substring(lastIndex+1); 
 		
-
-		if(action.equals("login")) {
-			String _id = request.getParameter("id");
-			String _password = request.getParameter("password");
-			BuyerDao buyerDao = new JdbcBuyerDao();
-			Buyer buyer = buyerDao.findById(_id);
-			if(buyer != null && buyer.getPassword().equals(_password)) {
-				HttpSession session = request.getSession();
-				session.setAttribute("buyer", buyer);
-			}
+		if(action.equals("index")) {
+			
 		}else if(action.equals("productinfo")) {
 			String productName = request.getParameter("productname");
 			ProductDao productDao = new JdbcProductDao();
@@ -68,22 +60,18 @@ public class MallServlet extends HttpServlet{
 		
 		String dispatcherUrl = null;
 		
-		if(action.equals("login")) {
-			HttpSession session = request.getSession();
-			if(session.getAttribute("buyer") != null) {
-				dispatcherUrl = "/index.jsp";
-			}else {
-				dispatcherUrl = "/authentication/login.jsp";
-			}
+		if(action.equals("index")) {
+			dispatcherUrl = "/index.jsp";
 		}else if(action.equals("productinfo")) {
 			dispatcherUrl = "/products/productinfo.jsp";
 		}else if(action.equals("history")) {
 			dispatcherUrl = "/history/history.jsp";
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher(dispatcherUrl);
-		rd.forward(request, response);
-		
+	    if(dispatcherUrl != null) {
+	    	RequestDispatcher rd = request.getRequestDispatcher(dispatcherUrl);
+	    	rd.forward(request, response);
+	    }
 	}
 	
 }

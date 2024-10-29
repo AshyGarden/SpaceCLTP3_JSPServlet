@@ -28,7 +28,7 @@
                </ul>
                <form class="d-flex">
                		<c:choose>
-	              		<c:when test="${member != null && member == buyer}"> <!-- member is not null + buyer -->
+	              		<c:when test="${buyer!=null}"> <!-- member is not null + buyer -->
 		                   	<!-- Buyer Login status start-->
 		                   	<button class="btn btn-outline-dark" type="submit">　
 		                       <i class="bi-cart-fill me-1"></i>
@@ -43,7 +43,7 @@
 	                   		<!-- Buyer Login status end -->
 	              		</c:when>
 	              		
-                   		<c:when test="${member != null && member == seller}"> <!-- member is not null + seller -->
+                   		<c:when test="${seller!=null}"> <!-- member is not null + seller -->
                    			<!-- seller login status start -->
 			                <a class="btn btn-outline-dark mt-auto" href="logout">logout</a>                            		
                    			<!-- seller login status end -->
@@ -51,7 +51,7 @@
                    		
 	               		<c:otherwise>
 		               		<!-- logout status start -->
-		                   	<a class="btn btn-outline-dark mt-auto" href="login">login</a>
+		                   	<a class="btn btn-outline-dark mt-auto" href="loginForm">login</a>
 		                   	&nbsp;
 		                   	<a class="btn btn-outline-dark mt-auto" href="signinBuyer">SignUp(Buyer)</a>
 		                   	&nbsp;
