@@ -48,10 +48,10 @@
 	              <form action = "${pageContext.request.contextPath}/login" method = "post">
 	              	<input type = "hidden" name="userType" value = "seller">
 	                  <div class="form-group">
-	                      <input type="text" class="form-control" placeholder="ID" />
+	                      <input type="text" class="form-control" name="id" id="id" placeholder="ID" />
 	                  </div>
 	                  <div class="form-group">
-	                      <input type="password" class="form-control" placeholder="Password"/>
+	                      <input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
 	                  </div>
 	                  <div class="form-group">
 	                      <input type="submit" class="btnSubmit" value="Login" />
