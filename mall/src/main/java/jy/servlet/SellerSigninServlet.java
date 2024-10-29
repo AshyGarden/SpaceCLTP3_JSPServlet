@@ -30,32 +30,37 @@ public class SellerSigninServlet extends HttpServlet{
 		String uri = request.getRequestURI();
 		int lastIndex = uri.lastIndexOf("/"); 
 		String action = uri.substring(lastIndex+1); 
-		String dispatcherUrl = null;
 		
+		String dispatcherUrl = null;
+	
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 		if(action.equals("signinSeller")) {
+			
 			
 			JdbcSellerDao jdbcSellerDao = new JdbcSellerDao();
 			Seller seller = new Seller();
 			
 			seller.setName(request.getParameter("name"));
-			seller.setSeller_id(request.getParameter("seller_id"));
+			seller.setSellerId(request.getParameter("seller_id"));
 			seller.setPassword(request.getParameter("password"));
-			seller.setPostal_code(request.getParameter("postal_code"));
-			seller.setStreet_address(request.getParameter("street_address"));
-			seller.setAddress_detail(request.getParameter("address_detail"));
-			seller.setPhone_number(request.getParameter("phone_number"));
+			seller.setPostalCode(request.getParameter("postnum"));
+			seller.setStreetAddress(request.getParameter("addr1"));
+			seller.setAddressDetail(request.getParameter("addr2"));
+			seller.setPhoneNumber(request.getParameter("phone_number"));
 			seller.setEmail(request.getParameter("email"));
-			seller.setCompany_name(request.getParameter("company_name"));
+			seller.setCompanyName(request.getParameter("company_name"));
+			
+			System.out.println(seller.toString());
+			
 			
 			jdbcSellerDao.insert(seller);
 			
 			dispatcherUrl ="/pages/authentication/login.jsp";
 
 		}else {
+			
+		dispatcherUrl ="/pages/authentication/signinSeller.jsp";
 		
-		//System.out.println(action);
-
-			dispatcherUrl ="/pages/authentication/signinSeller.jsp";
 		}
 		
 		
