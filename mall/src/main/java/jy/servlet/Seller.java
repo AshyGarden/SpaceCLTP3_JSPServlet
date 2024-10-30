@@ -1,16 +1,16 @@
 package jy.servlet;
 
 public class Seller {
-	int sellerNumber;
-	String sellerId;
-	String name;   
-	String password; 
-	String postalCode;
-	String streetAddress;
-	String addressDetail;
-	String phoneNumber;
-	String email;
-	String companyName;
+	private int sellerNumber;
+	private String sellerId;
+	private String name;   
+	private String password; 
+	private String postalCode;
+	private String streetAddress;
+	private String addressDetail;
+	private String phoneNumber;
+	private String email;
+	private String companyName;
 	
 	public Seller() {}
 
