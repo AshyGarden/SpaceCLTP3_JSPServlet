@@ -39,25 +39,27 @@ table, th, td {
 	   <!-- Header End -->
 <section>
 
-<c:if test="${!empty history}">
-	<table>
+<table>
+	<tr>
+		<th>history number</th>
+		<th>product number</th>
+		<th>product count</th>
+		<th>trade_time</th>
+	</tr>
+	<c:forEach var="trades" items="${trade}">
 		<tr>
-			<th>order number</th>
-		</tr>
-		<c:forEach var="historylist" items="${history}">
-		<tr>
-			<td><a href="buyertrade?history_number=${historylist.history_number}">${historylist.history_number}</a></td>
+			<td>${trades.history.history_number}</td>
+			<td>${trades.product.productNumber}</td>
+			<td>${trades.product_count}</td>
+			<td>${trades.trade_time}</td>
 			
 		</tr>
 		
-		</c:forEach>
-		
+	</c:forEach>
 	
-	</table>
 
-</c:if>
+</table>
 
-<c:if test="${empty history}">there is no history.</c:if>
 </section>
 <div>
 <jsp:include page="/global/footer.jsp"/>
