@@ -4,6 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
