@@ -109,21 +109,21 @@ public class JdbcSellerDao implements SellerDao{
 	public void update(Seller seller) {
     	
     	try(Connection connection = DataSource.getDataSource();
-    			PreparedStatement pStatement = connection.prepareStatement("UPDATE SELLER SET SELLER_ID = ?, PASSWORD =?, NAME = ?, POSTAL_CODE = ? , STREET_ADDRESS = ?,"
+    			PreparedStatement pStatement = connection.prepareStatement("UPDATE SELLER SET PASSWORD =?, NAME = ?, POSTAL_CODE = ? , STREET_ADDRESS = ?,"
     					+ "ADDRESS_DETAIL = ?, PHONE_NUMBER = ?, EMAIL = ?, COMPANY_NAME = ?"
-    					+ "WHERE SELLER_NUMBER = ?")){ 
+    					+ "WHERE SELLER_ID = ?")){ 
     			
     		
-    			pStatement.setString(1, seller.getSellerId());
-    			pStatement.setString(2, seller.getPassword());    		
-    			pStatement.setString(3, seller.getName());
-    			pStatement.setString(4, seller.getPostalCode());
-    			pStatement.setString(5, seller.getStreetAddress());
-    			pStatement.setString(6, seller.getAddressDetail());
-    			pStatement.setString(7, seller.getPhoneNumber());
-    			pStatement.setString(8, seller.getEmail());
-    			pStatement.setString(9, seller.getCompanyName());
-    			pStatement.setInt(10, seller.getSellerNumber());
+    			
+    			pStatement.setString(1, seller.getPassword());    		
+    			pStatement.setString(2, seller.getName());
+    			pStatement.setString(3, seller.getPostalCode());
+    			pStatement.setString(4, seller.getStreetAddress());
+    			pStatement.setString(5, seller.getAddressDetail());
+    			pStatement.setString(6, seller.getPhoneNumber());
+    			pStatement.setString(7, seller.getEmail());
+    			pStatement.setString(8, seller.getCompanyName());
+    			pStatement.setString(9, seller.getSellerId());
 
     			pStatement.executeUpdate();
     			
