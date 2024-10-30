@@ -49,25 +49,14 @@ public class MallServlet extends HttpServlet{
 			ProductDao productDao = new JdbcProductDao();
 			Product product = productDao.findByName(productName);
 			request.setAttribute("product", product);
-		}else if(action.equals("history")) {
-			HttpSession session = request.getSession();
-			Buyer buyer = (Buyer) session.getAttribute("buyer");
-			HistoryDao historyDao = new JdbcHistoryDao();
-			List<History> history = historyDao.findByBuyerNumber(buyer.getBuyer_number());
-			request.setAttribute("history", history);
-			
 		}
-		
 		String dispatcherUrl = null;
 		
 		if(action.equals("index")) {
 			dispatcherUrl = "/index.jsp";
 		}else if(action.equals("productinfo")) {
 			dispatcherUrl = "/products/productinfo.jsp";
-		}else if(action.equals("history")) {
-			dispatcherUrl = "/history/history.jsp";
 		}
-		
 	    if(dispatcherUrl != null) {
 	    	RequestDispatcher rd = request.getRequestDispatcher(dispatcherUrl);
 	    	rd.forward(request, response);

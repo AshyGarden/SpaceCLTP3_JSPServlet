@@ -2,7 +2,9 @@ package mall.trade;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import jy.servlet.Product;
@@ -35,9 +37,34 @@ public class JdbcTradeDao implements TradeDao{
 	}
 
 	@Override
-	public List<Trade> findByHistoryNumber(History history) {
+	public List<Trade> findByHistoryNumber(int history_number) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		List<Trade> tradelist = new ArrayList<>();
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TRADE WHERE HISTORY_NUMBER = ?")){
+			preparedStatement.setInt(1, history_number);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				History history = new History();
+				history.setHistory_number(history_number);
+				Product product= new Product();
+				product.setProductNumber(rs.getInt("PRODUCT_NUMBER"));
+				Trade trade = new Trade();
+				trade.setHistory(history);
+				trade.setProduct_count(rs.getInt("PRODUCT_COUNT"));
+				trade.setTrade_number(rs.getInt("TRADE_NUMBER"));
+				trade.setTrade_time(rs.getTimestamp("TRADE_TIME"));
+				trade.setProduct(product);
+				
+				tradelist.add(trade);
+				
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return tradelist;
 	}
 
 	@Override
