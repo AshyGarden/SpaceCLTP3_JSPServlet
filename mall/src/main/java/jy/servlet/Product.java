@@ -1,19 +1,18 @@
 package jy.servlet;
 
 public class Product {
-	int productNumber;
-	int price;
-	String name;
-	String category;
-	String description;
-	int discountPercentage;
-	Seller seller;
+	private int productNumber;
+	private int price;
+	private String name;
+	private String category;
+	private String description;
+	private int discountPercentage;
+	private Seller seller;
 
 	public Product() {}
 	
 	public Product(int productNumber, int price, String name, String category, String description,
 			int discountPercentage, Seller seller) {
-		super();
 		this.productNumber = productNumber;
 		this.price = price;
 		this.name = name;
@@ -23,11 +22,11 @@ public class Product {
 		this.seller = seller;
 	}
 
-	public int getProduct_number() {
+	public int getProductNumber() {
 		return productNumber;
 	}
 
-	public void setProduct_number(int productNumber) {
+	public void setProductNumber(int productNumber) {
 		this.productNumber = productNumber;
 	}
 
@@ -63,11 +62,11 @@ public class Product {
 		this.description = description;
 	}
 
-	public int getDiscount_percentage() {
+	public int getDiscountPercentage() {
 		return discountPercentage;
 	}
 
-	public void setDiscount_percentage(int discountPercentage) {
+	public void setDiscountPercentage(int discountPercentage) {
 		this.discountPercentage = discountPercentage;
 	}
 
@@ -82,9 +81,10 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [productNumber=" + productNumber + ", price=" + price + ", name=" + name + ", category="
-				+ category + ", description=" + description + ", discount_percentage=" + discountPercentage
-				+ ", seller=" + seller + "]";
+				+ category + ", description=" + description + ", discountPercentage=" + discountPercentage + ", seller="
+				+ seller + "]";
 	}
+
 	
 	
 
