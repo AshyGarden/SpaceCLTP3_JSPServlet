@@ -47,6 +47,8 @@
                    			<!-- seller login status start -->
 			                <a class="btn btn-outline-dark mt-auto" href="logout">logout</a>                            		
                    			<!-- seller login status end -->
+                   			<a class="btn btn-outline-dark mt-auto" href="updateForm">edit profile</a>
+                   			
                    		</c:when>
                    		
 	               		<c:otherwise>
