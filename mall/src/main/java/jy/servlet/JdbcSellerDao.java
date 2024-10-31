@@ -113,8 +113,6 @@ public class JdbcSellerDao implements SellerDao{
     					+ "ADDRESS_DETAIL = ?, PHONE_NUMBER = ?, EMAIL = ?, COMPANY_NAME = ?"
     					+ "WHERE SELLER_ID = ?")){ 
     			
-    		
-    			
     			pStatement.setString(1, seller.getPassword());    		
     			pStatement.setString(2, seller.getName());
     			pStatement.setString(3, seller.getPostalCode());

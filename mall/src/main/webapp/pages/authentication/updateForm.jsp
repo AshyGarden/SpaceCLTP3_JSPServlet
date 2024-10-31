@@ -45,6 +45,7 @@
                                      </div>
                                      <div class="form-group">
                                          <input type="text" class="form-control" name="seller_id" placeholder="아이디를 입력하세요" value="${seller.sellerId}" id="seller_id" disabled/>
+                                         <input type="text" class="form-control" name="seller_id" placeholder="아이디를 입력하세요" value="${seller.sellerId}" id="seller_id" hidden/>
                                      </div>
                                      <div class="form-group">
                                          <input type="password" class="form-control" name="password" placeholder="Password" value="" id="password" required/>
@@ -74,7 +75,7 @@
                                         <input type="email" class="form-control" placeholder="Email" value="" id="email" name="email"/>
                                      </div>
                                  </div>
-                                 <input type="submit" class="btnRegister" id="signupform" value="save"/>
+                                 <input type="submit" class="btnRegister" id="updateInfo" value="save"/>
                              </form>
                          </div>
                      </div>
