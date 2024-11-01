@@ -28,6 +28,7 @@
                      <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
                      <h3>반갑습니다!</h3>
                      <p>저희 매장 직원들은 여러분의 <br>회원가입을 적극 환영합니다!</p>
+                     <a href="sellerDelete"><input type="submit" class="btnLogin" value="delete   "/></a><br/>
                  </div>
                  <div class="col-md-9 register-right">
                      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
