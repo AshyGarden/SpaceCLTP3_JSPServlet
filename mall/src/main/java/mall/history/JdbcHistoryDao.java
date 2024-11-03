@@ -1,9 +1,11 @@
 package mall.history;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,17 +16,23 @@ public class JdbcHistoryDao implements HistoryDao {
 
 	@Override
 	public void insert(History history) {
-		// TODO Auto-generated method stub
-		try(Connection connection = DataSource.getDataSource();
-			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO HISTORY (BUYER_NUMBER) VALUES (?)")){
-			
-			preparedStatement.setInt(1, history.getBuyer().getBuyer_number());
-			preparedStatement.executeUpdate();
-			
-		}catch(SQLException e) {
-		e.printStackTrace();
-		}
+
+
+	    try (Connection connection = DataSource.getDataSource();
+	         PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO HISTORY (BUYER_NUMBER) VALUES (?)")) {
+
+	        // Set the parameters for the insert statement
+	        preparedStatement.setInt(1, history.getBuyer().getBuyer_number());
+
+	        // Execute the insert statement
+	        preparedStatement.executeUpdate();
+
+	        // Retrieve the generated keys
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
+
 	@Override
 	public void deleteByHistoryNumber(int history_number) {
 		// TODO Auto-generated method stub
@@ -79,6 +87,25 @@ public class JdbcHistoryDao implements HistoryDao {
 		}
 		
 		return buyer_history;
+	}
+
+	@Override
+	public int findLatestHistory() {
+		// TODO Auto-generated method stub
+		int latest_key = -1;
+		try(Connection connection = DataSource.getDataSource()){
+			
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM HISTORY ORDER BY HISTORY_NUMBER DESC FETCH FIRST 1 ROW ONLY");
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next()) {
+				latest_key = rs.getInt("HISTORY_NUMBER");
+			}
+			
+			
+		}catch(SQLException e) {
+		e.printStackTrace();
+		}
+		return latest_key;
 	}
 
 

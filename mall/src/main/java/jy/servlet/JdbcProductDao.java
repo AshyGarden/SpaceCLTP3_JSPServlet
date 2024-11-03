@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import mall.cart.Cart;
 import mall.global.DataSource;
 
 public class JdbcProductDao implements ProductDao{
@@ -51,7 +52,7 @@ public class JdbcProductDao implements ProductDao{
                 product.setDescription(rs.getString("DESCRIPTION"));
                 
                 Seller seller = new Seller();
-                seller.setSellerId(rs.getString("SELLER_NUMBER"));
+                seller.setSellerNumber(rs.getInt("SELLER_ID"));
                 product.setSeller(seller);
                
                 products.add(product);
@@ -169,6 +170,61 @@ public class JdbcProductDao implements ProductDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Cart> findCartProducts(ArrayList<Cart> cartList) {
+		// TODO Auto-generated method stub
+		List<Cart> products = new ArrayList<>();
+		try(Connection conn = DataSource.getDataSource();
+	             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM PRODUCT WHERE PRODUCT_NUMBER = ?")){
+			if(cartList.size()>0) {
+				for(Cart cartitem:cartList) {
+					preparedStatement.setInt(1, cartitem.getProductNumber());
+					ResultSet rs = preparedStatement.executeQuery();
+					while(rs.next()) {
+						Cart cart = new Cart();
+						cart.setProductNumber(rs.getInt("PRODUCT_NUMBER"));
+						cart.setCategory(rs.getString("CATEGORY"));
+						cart.setName(rs.getString("NAME"));
+						cart.setPrice(rs.getInt("PRICE")*cartitem.getQuantity());;
+						cart.setQuantity(cartitem.getQuantity());
+						products.add(cart);
+						
+					}
+				}
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+
+	@Override
+	public int getTotalCartPrice(ArrayList<Cart> cartList) {
+		// TODO Auto-generated method stub
+		int totalprice = 0;
+		try(Connection conn = DataSource.getDataSource();
+	             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM PRODUCT WHERE PRODUCT_NUMBER = ?")) {
+			if(cartList.size()>0) {
+				for(Cart item:cartList) {
+					preparedStatement.setInt(1, item.getProductNumber());
+					ResultSet rs = preparedStatement.executeQuery();
+					while(rs.next()) {
+						totalprice += rs.getInt("PRICE")*item.getQuantity();
+					}
+					
+				}
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return totalprice;
+	}
+	
+	
+
+	
 	
 
 }

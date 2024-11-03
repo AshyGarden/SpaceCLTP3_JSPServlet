@@ -7,4 +7,5 @@ public interface HistoryDao {
 	void deleteByHistoryNumber(int history_number);
 	void deleteByBuyerNumber(int buyer_number);
 	List<History> findByBuyerNumber(int buyer_number);
+	int findLatestHistory();
 }

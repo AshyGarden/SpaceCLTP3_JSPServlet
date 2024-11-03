@@ -1,5 +1,13 @@
+<%@page import="mall.cart.Cart"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@page import="java.util.ArrayList"%>
+<%ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+if (cart_list != null) {
+	request.setAttribute("cart_list", cart_list);     
+} 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,27 +48,24 @@
                      <div class="tab-content" id="myTabContent">
                          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                              <h3 class="register-heading">회원가입 양식</h3>
-                             <form action="login" class="row register-form" id="signupform" method="post" >
+                             <form action="buyersignup" class="row register-form" id="signupform" method="post" >
                                  <div class="col-md-6">
                                      <div class="form-group">
-                                         <input type="text" class="form-control" placeholder="Name" value="" required/>
+                                         <input type="text" class="form-control" name="name" placeholder="Name" value="" id="name" required/>
                                      </div>
                                      <div class="form-group">
-                                         <input type="text" class="form-control" placeholder="아이디를 입력하세요" value="" required/>
+                                         <input type="text" class="form-control" name="buyer_id" placeholder="아이디를 입력하세요" value="" id="buyer_id" required/>
                                      </div>
                                      <div class="form-group">
-                                         <input type="password" class="form-control"  placeholder="Password" value="" required/>
+                                         <input type="password" class="form-control" name="password" placeholder="Password" value="" id="password" required/>
                                      </div>
                                      <div class="form-group">
-                                         <input type="password" class="form-control"  placeholder="Confirm Password *" value="" required/>
-                                     </div>
-                                     <div class="form-group">
-                                         <input type="text" class="form-control" placeholder="닉네임을 입력해주세요(선택사항)" value="" /> <!--  -->
+                                         <input type="password" class="form-control" name="password_confirm" placeholder="Confirm Password *" value="" id="password" required/>
                                      </div>
                                  </div>
                                  <div class="col-md-6">
                                      <div class="form-group">
-                                     	<input type="text" id="sample6_postcode" name="postnum" placeholder="우편번호">
+                                     	<input type="text" name="postnum" placeholder="우편번호" id="sample6_postcode">
                                      	<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">                         
                                      </div>
                                      <div class="form-group">
@@ -70,10 +75,10 @@
                                      	<input type="text" class="form-control" id="sample6_detailAddress" name="addr2" placeholder="상세주소">
                                      </div>
                                      <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="PhoneNum" value="" />
-                                     </div>
+                                        <input type="text" class="form-control" placeholder="PhoneNum" value="" id="phone_number" name="phone_number"/>
+                                     </div> 
                                      <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email" value="" />
+                                        <input type="email" class="form-control" placeholder="Email" value="" id="email" name="email"/>
                                      </div>
                                  </div>
                                  <input type="submit" class="btnRegister" id="signupform" value="Register"/>
