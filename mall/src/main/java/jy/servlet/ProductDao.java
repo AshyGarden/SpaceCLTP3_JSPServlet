@@ -1,6 +1,9 @@
 package jy.servlet;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import mall.cart.Cart;
 
 public interface ProductDao {
 	
@@ -11,5 +14,7 @@ public interface ProductDao {
 	Product findBySellerNo(Seller seller);
 	void update(Product product);
 	void deleteById(int productNumber);
+	List<Cart> findCartProducts(ArrayList<Cart> cartList);
+	int getTotalCartPrice(ArrayList<Cart> cartList);
 
 }

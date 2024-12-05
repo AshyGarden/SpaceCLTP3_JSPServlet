@@ -8,6 +8,7 @@ public class Product {
 	private String description;
 	private int discountPercentage;
 	private Seller seller;
+	private String image; // younghun added for image.
 
 	public Product() {}
 	
@@ -20,6 +21,20 @@ public class Product {
 		this.description = description;
 		this.discountPercentage = discountPercentage;
 		this.seller = seller;
+	}
+	
+
+	public Product(int productNumber, int price, String name, String category, String description,
+			int discountPercentage, Seller seller, String image) {
+		super();
+		this.productNumber = productNumber;
+		this.price = price;
+		this.name = name;
+		this.category = category;
+		this.description = description;
+		this.discountPercentage = discountPercentage;
+		this.seller = seller;
+		this.image = image;
 	}
 
 	public int getProductNumber() {
@@ -76,6 +91,15 @@ public class Product {
 
 	public void setSeller(Seller seller) {
 		this.seller = seller;
+	}
+
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	@Override

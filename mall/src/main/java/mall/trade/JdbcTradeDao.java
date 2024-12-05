@@ -19,9 +19,11 @@ public class JdbcTradeDao implements TradeDao{
 		try(Connection connection = DataSource.getDataSource();
 			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO TRADE "
 					+ "(PRODUCT_COUNT, TRADE_TIME, HISTORY_NUMBER, PRODUCT_NUMBER) "
-					+ "VALUES (?,?,?,?)")){
+					+ "VALUES (?,CURRENT_TIMESTAMP,?,?)")){
 
 			preparedStatement.setInt(1, trade.getProduct_count());
+			preparedStatement.setInt(2, trade.getHistory().getHistory_number());
+			preparedStatement.setInt(3, trade.getProduct().getProductNumber());
 			preparedStatement.executeUpdate();
 			
 			
@@ -45,6 +47,7 @@ public class JdbcTradeDao implements TradeDao{
 			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TRADE WHERE HISTORY_NUMBER = ?")){
 			preparedStatement.setInt(1, history_number);
 			ResultSet rs = preparedStatement.executeQuery();
+			
 			while(rs.next()) {
 				History history = new History();
 				history.setHistory_number(history_number);

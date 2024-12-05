@@ -2,6 +2,13 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+
+<style>
+    .badge-danger {
+        background-color: red; /* Ensures background color is red */
+        color: red; /* Sets text color to white */
+    }
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Navigation Bar</title>
@@ -30,13 +37,15 @@
                		<c:choose>
 	              		<c:when test="${buyer!=null}"> <!-- member is not null + buyer -->
 		                   	<!-- Buyer Login status start-->
-		                   	<button class="btn btn-outline-dark" type="submit">　
-		                       <i class="bi-cart-fill me-1"></i>
-		                       Cart
-		                       <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-		                  	</button>
+		                   	
 		                  	<a class="btn btn-outline-dark" href="${pageContext.request.contextPath}/buyerhistory">
 							    History
+							</a>
+							&nbsp;
+							<a class="btn btn-outline-dark" href="${pageContext.request.contextPath}/cart">
+							    <i class="bi-cart-fill me-1"></i>
+							    Cart
+							    <span class="badge badge-danger">${cart_list.size()}</span>
 							</a>
 	                   		&nbsp;
 			                <a class="btn btn-outline-dark mt-auto" href="logout">logout</a>         
@@ -53,6 +62,12 @@
                    		
 	               		<c:otherwise>
 		               		<!-- logout status start -->
+		               		<a class="btn btn-outline-dark" href="${pageContext.request.contextPath}/cart">
+							    <i class="bi-cart-fill me-1"></i>
+							    Cart
+							    <span class="badge badge-danger">${cart_list.size()}</span>
+							</a>
+							&nbsp;
 		                   	<a class="btn btn-outline-dark mt-auto" href="loginForm">login</a>
 		                   	&nbsp;
 		                   	<a class="btn btn-outline-dark mt-auto" href="signinBuyer">SignUp(Buyer)</a>
